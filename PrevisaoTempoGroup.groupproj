@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B872C91A-65AF-4C41-9DF7-5147B18A0F4B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TBGPrevisaoTempo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Sample\PrevisaoTempo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TBGPrevisaoTempo">
+        <MSBuild Projects="TBGPrevisaoTempo.dproj"/>
+    </Target>
+    <Target Name="TBGPrevisaoTempo:Clean">
+        <MSBuild Projects="TBGPrevisaoTempo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TBGPrevisaoTempo:Make">
+        <MSBuild Projects="TBGPrevisaoTempo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="PrevisaoTempo">
+        <MSBuild Projects="Sample\PrevisaoTempo.dproj"/>
+    </Target>
+    <Target Name="PrevisaoTempo:Clean">
+        <MSBuild Projects="Sample\PrevisaoTempo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrevisaoTempo:Make">
+        <MSBuild Projects="Sample\PrevisaoTempo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TBGPrevisaoTempo;PrevisaoTempo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TBGPrevisaoTempo:Clean;PrevisaoTempo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TBGPrevisaoTempo:Make;PrevisaoTempo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
